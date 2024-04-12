@@ -7,13 +7,13 @@ const hashPassword = (password) => {
                 reject(err)
             }
             bcrypt.hash(password, salt, (err, hash) => {
-                if(err) {
+                if (err) {
                     reject(err)
                 }
                 resolve(hash)
             })
         })
-    } )
+    })
 }
 
 const comparePassword = (password, hashed) => {
