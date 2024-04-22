@@ -10,20 +10,20 @@ const registerUser = async (req, res) => {
         // Check if name was entered
         if (!name) {
             return res.json({
-                error: 'name is required'
+                error: 'Name is required'
             })
         };
         //Check if password is good
         if (!password || password.length < 6) {
             return res.json({
-                error: 'password is required and should be at least 6 characters long'
+                error: 'Password is required and should be at least 6 characters long'
             })
         };
         // Check email
         const exist = await User.findOne({ email });
         if (exist) {
             return res.json({
-                error: 'email is taken already'
+                error: 'Email is taken already'
             })
         }
 
@@ -64,7 +64,7 @@ const loginUser = async (req, res) => {
         }
         if (!match) {
             res.json({
-                error: "password do not match"
+                error: "Password do not match"
             })
         }
     } catch (error) {
