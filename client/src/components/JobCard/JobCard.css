@@ -1,0 +1,18 @@
+.job-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  flex-grow: 0;
+  border-radius: 20px;
+  background-color:black;
+}
+
+.card-title {
+  font-size: 26px;
+}
+
+.job-info span {
+  display: inline-block;
+  margin-right: 15px;
+}

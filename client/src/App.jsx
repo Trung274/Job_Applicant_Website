@@ -1,14 +1,14 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
+import Navbar from './components/Navbar/Navbar';
+import Home from './pages/Home/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast'
 import { UserContextProvider } from '../context/userContext';
-import Dashboard from './pages/Dashboard';
-import AuthPage from './pages/AuthPage';
+import Dashboard from './pages/Dashboard/Dashboard';
+import AuthPage from './pages/Auth/AuthPage';
 
 axios.defaults.baseURL = "http//localhost:8000";
 axios.defaults.withCredentials = true

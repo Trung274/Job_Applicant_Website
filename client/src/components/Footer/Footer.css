@@ -1,0 +1,52 @@
+.content {
+    /* This should wrap all content except the footer */
+    flex: 1;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section h4 {
+    margin-bottom: 1rem;
+}
+
+.footer-section p,
+.footer-section address,
+.footer-section a {
+    margin-bottom: 0.5rem;
+}
+
+.subscribe-form {
+    display: flex;
+}
+
+.subscribe-form input {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.subscribe-form button {
+    padding: 0.5rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+    }
+}

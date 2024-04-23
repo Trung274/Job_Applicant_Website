@@ -1,0 +1,13 @@
+.job-listings-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* This adds space between the cards */
+  justify-content: center;
+}
+
+.job-card {
+  flex: 1 1 calc(33.333% - 20px);
+  /* Adjust the percentage for three items per row, minus the gap */
+  margin-bottom: 20px;
+}
