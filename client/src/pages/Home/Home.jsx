@@ -91,7 +91,7 @@ const dummyJobs = [
     "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
     "company": "Innovatech",
     "location": "New York, NY",
-    "logoUrl": "/assets/logos/logo6.png",
+    "logoUrl": "/assets/logos/logo4.png",
     "salary": "$120,000 per year"
   },
   {
@@ -100,7 +100,7 @@ const dummyJobs = [
     "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
     "company": "Innovatech",
     "location": "New York, NY",
-    "logoUrl": "/assets/logos/logo6.png",
+    "logoUrl": "/assets/logos/logo2.png",
     "salary": "$120,000 per year"
   },
   {
@@ -109,7 +109,7 @@ const dummyJobs = [
     "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
     "company": "Innovatech",
     "location": "New York, NY",
-    "logoUrl": "",
+    "logoUrl": "/assets/logos/logo3.png",
     "salary": "$120,000 per year"
   },
 
