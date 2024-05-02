@@ -1,12 +1,31 @@
 .job-card {
+  display: flex;
+  align-items: flex-start;
   border: 1px solid #ddd;
   padding: 20px;
   margin-bottom: 10px;
-  border-radius: 4px;
-  flex-grow: 0;
   border-radius: 20px;
-  background-color:black;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
+
+.job-card:hover {
+  transform: scale(1.05);
+}
+
+.company-logo {
+  width: 100px; 
+  height: auto;
+  margin-right: 20px; /* Adjust the space between the logo and the content */
+  border-radius: 20px; /* Optional, if you want rounded corners for the logos */
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
 
 .card-title {
   font-size: 26px;

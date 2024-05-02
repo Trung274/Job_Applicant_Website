@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import JobCard from "../../components/JobCard/JobCard";
-import Footer from "../../components/Footer/Footer";
 import "./Home.css"
 
 // Dummy data 
@@ -9,43 +8,109 @@ const dummyJobs = [
     "_id": { "$oid": "unique_id_1" },
     "title": "Software Engineer",
     "description": "Looking for a qualified software engineer to design, develop, and install software solutions.",
-    "company": "Tech Corp",
+    "company": "Facebook",
     "location": "San Francisco, CA",
+    "logoUrl": "/assets/logos/logo1.png",
+    "salary": "$120,000 per year"
   },
   {
     "_id": { "$oid": "unique_id_2" },
     "title": "Software Engineer",
     "description": "Looking for a qualified software engineer to design, develop, and install software solutions.",
-    "company": "Tech Corp",
-    "location": "San Francisco, CA"
+    "company": "X Company",
+    "location": "San Francisco, CA",
+    "logoUrl": "/assets/logos/logo2.png",
+    "salary": "$120,000 per year"
   },
   {
     "_id": { "$oid": "unique_id_3" },
     "title": "Product Manager",
     "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
-    "company": "Innovatech",
-    "location": "New York, NY"
+    "company": "Google",
+    "location": "New York, NY",
+    "logoUrl": "/assets/logos/logo3.png",
+    "salary": "$120,000 per year"
   },
   {
     "_id": { "$oid": "unique_id_4" },
     "title": "Product Manager",
     "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
     "company": "Innovatech",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "logoUrl": "/assets/logos/logo4.png",
+    "salary": "$120,000 per year"
   },
   {
     "_id": { "$oid": "unique_id_5" },
     "title": "Product Manager",
     "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
     "company": "Innovatech",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "logoUrl": "/assets/logos/logo5.png",
+    "salary": "$120,000 per year"
   },
   {
     "_id": { "$oid": "unique_id_6" },
     "title": "Product Manager",
     "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
     "company": "Innovatech",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "logoUrl": "/assets/logos/logo6.png",
+    "salary": "$120,000 per year"
+  },
+  {
+    "_id": { "$oid": "unique_id_7" },
+    "title": "Product Manager",
+    "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
+    "company": "Innovatech",
+    "location": "New York, NY",
+    "logoUrl": "/assets/logos/logo6.png",
+    "salary": "$120,000 per year"
+  },
+  {
+    "_id": { "$oid": "unique_id_8" },
+    "title": "Product Manager",
+    "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
+    "company": "Innovatech",
+    "location": "New York, NY",
+    "logoUrl": "/assets/logos/logo6.png",
+    "salary": "$120,000 per year"
+  },
+  {
+    "_id": { "$oid": "unique_id_9" },
+    "title": "Product Manager",
+    "description": "Seeking an experienced product manager .",
+    "company": "Innovatech",
+    "location": "New York, NY",
+    "logoUrl": "/assets/logos/logo6.png",
+    "salary": "$120,000 per year"
+  },
+  {
+    "_id": { "$oid": "unique_id_10" },
+    "title": "Product Manager",
+    "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
+    "company": "Innovatech",
+    "location": "New York, NY",
+    "logoUrl": "/assets/logos/logo6.png",
+    "salary": "$120,000 per year"
+  },
+  {
+    "_id": { "$oid": "unique_id_11" },
+    "title": "Product Manager",
+    "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
+    "company": "Innovatech",
+    "location": "New York, NY",
+    "logoUrl": "/assets/logos/logo6.png",
+    "salary": "$120,000 per year"
+  },
+  {
+    "_id": { "$oid": "unique_id_12" },
+    "title": "Product Manager",
+    "description": "Seeking a detail-oriented, experienced product manager to lead our product development team.",
+    "company": "Innovatech",
+    "location": "New York, NY",
+    "logoUrl": "",
+    "salary": "$120,000 per year"
   },
 
 ];
@@ -60,15 +125,18 @@ export default function Home() {
     setJobs(dummyJobs);
   }, []);
 
+  const handleJobClick = (job) => {
+    alert(`Clicked job: ${job.title}`); // Replace this with a modal or navigation logic
+  };
+
   return (
     <div>
-      <h1>Job Listings</h1>
+      <div className="title">Explore Opportunities</div>
       <div className="job-listings-container">
         {jobs.map(job => (
-          <JobCard key={job._id.$oid} job={job} />
+          <JobCard key={job._id.$oid} job={job} onClick={handleJobClick} />
         ))}
       </div>
-      <Footer />
     </div>
   );
 }
