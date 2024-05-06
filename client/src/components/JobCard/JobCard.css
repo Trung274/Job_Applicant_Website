@@ -35,3 +35,21 @@
   display: inline-block;
   margin-right: 15px;
 }
+
+.job-card .job-info span {
+  display: block;  /* Makes each span appear on a new line, adjust as needed */
+  margin: 5px 0;  /* Adds some space between each item, adjust as needed */
+}
+
+.job-card .job-info span.company {
+  font-weight: bold;
+  font-size: large;    
+}
+
+.job-card .job-info span.location {
+  font-style: italic;  
+}
+
+.job-card .job-info span.salary {
+  color: green;  
+}

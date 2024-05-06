@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import "./Navbar.css";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 
 export default function Navbar() {
     return (
@@ -9,6 +10,10 @@ export default function Navbar() {
             <Link to='/jobs' className="nav-item">Jobs</Link>
             <Link to='/businesses' className="nav-item">Businesses</Link>
             <Link to='/auth' className="login-register-button">Login/Register</Link>
+            <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
         </nav>
     );
 }

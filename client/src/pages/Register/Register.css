@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40vh;
+  height: 60vh;
   background-color: #e9ecefe8;
 }
 
@@ -32,4 +32,17 @@
   color: white;
   border: none;
   cursor: pointer;
+}
+
+.register-form .role-dropdown {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  background: #3b3b3b;
+  border: 1px solid #ccc;
+}
+
+.register-form select:focus {
+  border-color: #646cff;
+  outline: none;
 }

@@ -10,21 +10,22 @@ export default function Register() {
         name: '',
         email: '',
         password: '',
+        role: '',
     })
 
     const registerUser = async (e) => {
         e.preventDefault()
-        const { name, email, password } = data
+        const { name, email, password, role } = data
         try {
             const { data } = await axios.post(`http://localhost:8000/register`, {
-                name, email, password
+                name, email, password, role
             })
             if (data.error) {
                 toast.error(data.error)
             } else {
                 setData({})
-                toast.success('Login Successful, Welcome!')
-                navigate('/login')
+                toast.success('Registration Successful, Welcome!')
+                navigate('/auth')
             }
         } catch (error) {
             console.log(error)
@@ -36,10 +37,20 @@ export default function Register() {
             <form onSubmit={registerUser} className="register-form">
                 <label>Name</label>
                 <input type="text" placeholder='Enter name...' value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} />
+
                 <label>Email</label>
                 <input type="email" placeholder='Enter email...' value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
+
                 <label>Password</label>
                 <input type="password" placeholder='Enter Password...' value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
+
+                <label>You are here as..?</label>
+                <select value={data.role} onChange={(e) => setData({ ...data, role: e.target.value })} className="role-dropdown">
+                    <option value="">Select role</option>
+                    <option value="user">User</option>
+                    <option value="business">Business</option>
+                </select>
+
                 <button type='submit'>Submit</button>
             </form>
         </div>

@@ -5,20 +5,37 @@ const jwt = require('jsonwebtoken');
 
 // Register Endpoint
 const registerUser = async (req, res) => {
+    console.log(req.body);
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, role } = req.body;
         // Check if name was entered
         if (!name) {
             return res.json({
                 error: 'Name is required'
             })
         };
+
+        //Check if email was entered
+        if (!email) {
+            return res.json({
+                error: 'Email is required'
+            })
+        }
+
+        // Check if role was entered and is valid
+        if (!role || !['user', 'business'].includes(role)) {
+            return res.status(400).json({
+                error: 'Role is required and must be either user or business'
+            });
+        }
+
         //Check if password is good
         if (!password || password.length < 6) {
             return res.json({
                 error: 'Password is required and should be at least 6 characters long'
             })
         };
+        
         // Check email
         const exist = await User.findOne({ email });
         if (exist) {
@@ -28,11 +45,13 @@ const registerUser = async (req, res) => {
         }
 
         const hashedPassword = await hashPassword(password)
+        
         //Create user in database
         const user = await User.create({
             name,
             email,
             password: hashedPassword,
+            role,
         });
 
         return res.json(user)
