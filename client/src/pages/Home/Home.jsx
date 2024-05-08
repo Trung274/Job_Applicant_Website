@@ -131,6 +131,7 @@ export default function Home() {
 
   return (
     <div>
+      <div><img src="assets/logos/Panel.png" alt="" /></div>
       <div className="title">Explore Opportunities</div>
       <div className="job-listings-container">
         {jobs.map(job => (

@@ -1,34 +1,33 @@
-import { useState } from "react";
-import axios from 'axios'
-import { toast } from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
-import "./Login.css"
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import { UserContext } from '../../../context/userContext'; 
+import './Login.css';
 
 export default function Login() {
-    const navigate = useNavigate()
+    const { login } = useContext(UserContext);
+    const navigate = useNavigate();
     const [data, setData] = useState({
         email: '',
         password: '',
-    })
+    });
 
     const loginUser = async (e) => {
-        e.preventDefault()
-        const { email, password } = data
+        e.preventDefault();
         try {
-            const { data } = await axios.post('http://localhost:8000/login', {
-                email,
-                password
-            });
-            if (data.error) {
-                toast.error(data.error)
+            const response = await axios.post('/login', data);
+            if (response.data.error) {
+                toast.error(response.data.error);
             } else {
-                setData({});
-                navigate('/')
+                login(response.data.user, response.data.token); // Assuming backend returns user data and token
+                navigate('/dashboard'); // Redirected to dashboard 
             }
         } catch (error) {
-
+            console.error('Login error:', error);
+            toast.error('Failed to log in');
         }
-    }
+    };
 
     return (
         <div className="login-container">
@@ -40,5 +39,5 @@ export default function Login() {
                 <button type='submit'>Login</button>
             </form>
         </div>
-    )
+    );
 }
