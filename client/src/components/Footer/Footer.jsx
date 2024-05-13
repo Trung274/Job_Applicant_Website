@@ -5,8 +5,8 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer-section">
-                <h4>Exclusive</h4>
-                <p>Subscribe</p>
+                <h4>Get job notifications</h4>
+                <p>The latest job news, articles, sent to your inbox weekly.</p>
                 <p>Get your CV reviewed and fixed by professionals</p>
                 <div className="subscribe-form">
                     <input type="email" placeholder="Enter your email" />
