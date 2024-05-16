@@ -1,10 +1,10 @@
 .job-card {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   border: 1px solid #ddd;
   padding: 20px;
   margin-bottom: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: black;
   color: white;
   cursor: pointer;
@@ -16,40 +16,50 @@
 }
 
 .company-logo {
-  width: 100px; 
-  height: auto;
-  margin-right: 20px; /* Adjust the space between the logo and the content */
-  border-radius: 20px; /* Optional, if you want rounded corners for the logos */
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+  border-radius: 10px;
 }
 
 .card-content {
   flex-grow: 1;
 }
 
-
 .card-title {
-  font-size: 26px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.job-title {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.job-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .job-info span {
-  display: inline-block;
   margin-right: 15px;
+  color: #666;
 }
 
-.job-card .job-info span {
-  display: block;  /* Makes each span appear on a new line, adjust as needed */
-  margin: 5px 0;  /* Adds some space between each item, adjust as needed */
+.job-info .location {
+  font-size: 14px;
 }
 
-.job-card .job-info span.company {
+.job-info .salary {
+  color: green;
+  font-size: 16px;
   font-weight: bold;
-  font-size: large;    
 }
 
-.job-card .job-info span.location {
-  font-style: italic;  
-}
-
-.job-card .job-info span.salary {
-  color: green;  
+.job-info .employment-type {
+  font-size: 14px;
+  color: #666;
 }

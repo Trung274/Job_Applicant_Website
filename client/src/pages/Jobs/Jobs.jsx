@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import JobCard from "../../components/JobCard/JobCard";
-import "./Home.css"
+import "./Jobs.css"
 
 // Dummy data 
 const dummyJobs = [
@@ -262,8 +262,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="poster"><img src="assets/imgs/Panel.png" alt="" /></div>
-      <div className="title">Latest Jobs Open</div>
+      <div className="title">All Jobs</div>
       <div className="job-listings-container">
         {jobs.map(job => (
           <JobCard key={job._id.$oid} job={job} onClick={handleJobClick} />

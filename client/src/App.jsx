@@ -7,6 +7,8 @@ import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
 import AuthPage from './pages/Auth/AuthPage';
+import Jobs from './pages/Jobs/Jobs';
+import Businesses from './pages/Businesses/Businesses'
 import Footer from './components/Footer/Footer';
 import UserProfile from './pages/UserProfile/UserProfile';
 import BusinessProfile from './pages/BusinessProfile/BusinessProfile';
@@ -31,11 +33,13 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/jobs' element={<Jobs />} />
+        <Route path='/businesses' element={<Businesses />} />
         <Route path='/profile' element={
           user ? (user.role === 'admin' ? <AdminDashboard /> :
             user.role === 'business' ? <BusinessProfile /> :
               <UserProfile />) :
-            <Navigate to="/auth" replace /> // Redirect to login if not authenticated
+            <Navigate to="/auth" replace /> // Redirect to login if not authenticated 
         } />
       </Routes>
       <Footer />
