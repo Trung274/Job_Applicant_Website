@@ -257,13 +257,13 @@ export default function Home() {
   }, []);
 
   const handleJobClick = (job) => {
-    alert(`Clicked job: ${job.title}`); // Replace this with a modal or navigation logic
+    alert(`Clicked job: ${job.jobTitle}`); // Replace this with a modal or navigation logic
   };
 
   return (
     <div>
-      <div className="poster"><img src="assets/imgs/Panel.png" alt="" /></div>
-      <div className="title">Latest Jobs Open</div>
+      <div className="poster"><img src="./assets/imgs/Panel.svg" alt="" /></div>
+      <div className="title"><img src="./assets/imgs/Jobsopen.svg" alt="" /></div>
       <div className="job-listings-container">
         {jobs.map(job => (
           <JobCard key={job._id.$oid} job={job} onClick={handleJobClick} />

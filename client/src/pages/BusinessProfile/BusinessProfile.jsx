@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
 
-export default function Dashboard() {
+export default function BusinessProfile() {
     const { user } = useContext(UserContext)
     return (
         <div>
-            <h1>whatsup business</h1>
+            <h1>hello business</h1>
             {!!user && (<h1>Hi {user.name}!</h1>)}
         </div>
     )

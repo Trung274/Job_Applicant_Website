@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import JobCard from "../../components/JobCard/JobCard";
 import "./Jobs.css"
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "../../components/ui/pagination";
+
 
 // Dummy data 
 const dummyJobs = [
@@ -246,12 +256,13 @@ const dummyJobs = [
   }
 ];
 
-export default function Home() {
-  // Mock data
+const ITEMS_PER_PAGE = 8;
+
+export default function Jobs() {
   const [jobs, setJobs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    //Section for fetching the data from the server
     // Load the dummy data (for now)
     setJobs(dummyJobs);
   }, []);
@@ -260,14 +271,57 @@ export default function Home() {
     alert(`Clicked job: ${job.title}`); // Replace this with a modal or navigation logic
   };
 
+  const totalPages = Math.ceil(jobs.length / ITEMS_PER_PAGE);
+  const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
+  const currentJobs = jobs.slice(startIdx, startIdx + ITEMS_PER_PAGE);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div>
-      <div className="title">All Jobs</div>
+      <div className="title"><img src="./assets/imgs/AllJobs.svg" alt="" /></div>
       <div className="job-listings-container">
-        {jobs.map(job => (
+        {currentJobs.map(job => (
           <JobCard key={job._id.$oid} job={job} onClick={handleJobClick} />
         ))}
       </div>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                if (currentPage > 1) handlePageChange(currentPage - 1);
+              }}
+            />
+          </PaginationItem>
+          {[...Array(totalPages)].map((_, idx) => (
+            <PaginationItem key={idx}>
+              <PaginationLink
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handlePageChange(idx + 1);
+                }}
+              >
+                {idx + 1}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
+          <PaginationItem>
+            <PaginationNext
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                if (currentPage < totalPages) handlePageChange(currentPage + 1);
+              }}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
 }

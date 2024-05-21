@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { UserContext } from '../../../context/userContext'; 
+import { UserContext } from '../../../context/userContext';
 import './Login.css';
 
 export default function Login() {
@@ -20,8 +20,8 @@ export default function Login() {
             if (response.data.error) {
                 toast.error(response.data.error);
             } else {
-                login(response.data.user, response.data.token); // Assuming backend returns user data and token
-                navigate('/dashboard'); // Redirected to dashboard 
+                login(response.data.user, response.data.token); // Backend returns user data and token
+                navigate('/'); // Redirected to home
             }
         } catch (error) {
             console.error('Login error:', error);

@@ -22,23 +22,28 @@ export default function Navbar() {
             <Link to='/jobs' className="nav-item">Jobs</Link>
             <Link to='/businesses' className="nav-item">Businesses</Link>
             {user ? (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Avatar>
-                            <AvatarImage src={user.avatar || "https://github.com/shadcn.png"} />
-                            <AvatarFallback>{user.initials || "CN"}</AvatarFallback>
-                        </Avatar>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem asChild><Link to='/profile'>Profile</Link></DropdownMenuItem>
-                        <DropdownMenuItem asChild><Link to='/settings'>Settings</Link></DropdownMenuItem>
-                        <DropdownMenuItem asChild><Link to='/saved'>Saved</Link></DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem onClick={logout}>Log out</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <div className="user-menu">
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <div className="user-info">
+                                <Avatar>
+                                    <AvatarImage src={user.avatar || "https://github.com/shadcn.png"} />
+                                    <AvatarFallback>{user.initials || "CN"}</AvatarFallback>
+                                </Avatar>
+                                <span className="user-name">{user.name}</span>
+                            </div>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem asChild><Link to='/profile'>Profile</Link></DropdownMenuItem>
+                            <DropdownMenuItem asChild><Link to='/settings'>Settings</Link></DropdownMenuItem>
+                            <DropdownMenuItem asChild><Link to='/saved'>Saved</Link></DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem onClick={logout}>Log out</DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
             ) : (
                 <Link to='/auth' className="login-register-button">Login/Register</Link>
             )}

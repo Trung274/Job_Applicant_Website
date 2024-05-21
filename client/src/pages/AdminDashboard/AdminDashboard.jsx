@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
 
-export default function Dashboard() {
+export default function AdminDashboard() {
     const { user } = useContext(UserContext)
     return (
         <div>

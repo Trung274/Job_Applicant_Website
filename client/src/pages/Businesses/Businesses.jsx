@@ -11,7 +11,7 @@ const businesses = [
     "companyProfileLink": "https://techsolutions.com",
     "city": "San Francisco",
     "address": "123 Tech Lane",
-    "profileImage": "/assets/profiles/profile1.png",
+    "profileImage": "/assets/imgs/logos/logo6.png",
     "description": "Leading tech solutions provider.",
     "jobOpenings": [
       {
@@ -21,7 +21,7 @@ const businesses = [
         "businessLogoUrl": "/assets/logos/logo1.png",
         "location": "San Francisco, CA",
         "description": "Develop and maintain software solutions.",
-        "salary": 120000,
+        "salary": "12$ per year",
         "employmentType": "Fulltime",
         "createdAt": "2024-05-14T00:00:00Z",
         "updatedAt": "2024-05-14T00:00:00Z"

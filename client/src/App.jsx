@@ -5,7 +5,6 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home/Home';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
-import Dashboard from './pages/Dashboard/Dashboard';
 import AuthPage from './pages/Auth/AuthPage';
 import Jobs from './pages/Jobs/Jobs';
 import Businesses from './pages/Businesses/Businesses'
@@ -30,7 +29,6 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/auth' element={<AuthPage />} />
-        <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/jobs' element={<Jobs />} />

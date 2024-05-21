@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const { Schema } = mongoose
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const userSchema = new Schema({
     name: String,
@@ -13,7 +13,6 @@ const userSchema = new Schema({
         enum: ['user', 'business', 'admin'],
         required: true
     },
-    /*
     userProfile: {
         type: Object,
         default: {},
@@ -25,9 +24,9 @@ const userSchema = new Schema({
     adminProfile: {
         type: Object,
         default: {},
-    }, */
+    }, 
 });
 
-const UserModel = mongoose.model('User', userSchema)
+const UserModel = mongoose.model('User', userSchema);
 
 module.exports = UserModel;
