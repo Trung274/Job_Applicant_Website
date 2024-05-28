@@ -16,8 +16,8 @@ const dummyData = {
         facebook: "http://www.facebook.com/trungnt261"
     },
     city: "Hanoi city",
-    userAvatar: "/path_to_avatar_image", // Replace with actual image path
-    userBackground: "/path_to_background_image", // Replace with actual image path
+    userAvatar: "/assets/avatars/avatar-1.png",
+    userBackground: "/assets/backgrounds/mountain.jpg", 
     gender: "Male",
     description: "Hey there! I'm Adrian...",
     languages: ["English", "Vietnamese"],
