@@ -33,12 +33,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/jobs' element={<Jobs />} />
         <Route path='/businesses' element={<Businesses />} />
-        <Route path='/profile' element={
-          user ? (user.role === 'admin' ? <AdminDashboard /> :
-            user.role === 'business' ? <BusinessProfile /> :
-              <UserProfile />) :
-            <Navigate to="/auth" replace /> // Redirect to login if not authenticated 
-        } />
+        <Route path='/profile' element={<UserProfile/>} />
       </Routes>
       <Footer />
     </UserContextProvider>

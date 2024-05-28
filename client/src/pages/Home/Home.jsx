@@ -262,9 +262,9 @@ export default function Home() {
 
   return (
     <div>
-      <div className="poster"><img src="./assets/imgs/Panel.svg" alt="" /></div>
-      <div className="title"><img src="./assets/imgs/Jobsopen.svg" alt="" /></div>
-      <div className="job-listings-container">
+      <div className="hposter"><img src="./assets/imgs/Panel.svg" alt="" /></div>
+      <div className="htitle"><img src="./assets/imgs/Jobsopen.svg" alt="" /></div>
+      <div className="hjob-listings-container">
         {jobs.map(job => (
           <JobCard key={job._id.$oid} job={job} onClick={handleJobClick} />
         ))}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import JobCard from "../../components/JobCard/JobCard";
+import JobModal from "../../components/JobModal/JobModal";
+import JobFilter from "../../components/JobFilter/JobFilter";
 import "./Jobs.css"
 import {
   Pagination,
@@ -256,19 +258,58 @@ const dummyJobs = [
   }
 ];
 
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 9;
+
+const parseSalary = (salary) => {
+  const value = salary.replace(/[^\d]/g, "");
+  return parseInt(value, 10);
+};
+
+const filterBySalaryRange = (salary, range) => {
+  const salaryValue = parseSalary(salary);
+  const [min, max] = range.replace(/[^\d-]/g, "").split("-").map(Number);
+  return salaryValue >= min && salaryValue <= max;
+};
 
 export default function Jobs() {
   const [jobs, setJobs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedJob, setSelectedJob] = useState(null);
+  const [filters, setFilters] = useState({
+    City: {
+      "San Francisco, CA": false,
+      "New York, NY": false,
+      "Austin, TX": false,
+      "Los Angeles, CA": false,
+      "Chicago, IL": false,
+      Remote: false
+    },
+    "Type of Employment": {
+      Fulltime: false,
+      "Part-Time": false,
+      Remote: false,
+      Internship: false,
+      Contract: false
+    },
+    "Salary Range": {
+      "$0 - $50k/year": false,
+      "$50k - $75k/year": false,
+      "$75k - $100k/year": false,
+      "$100k - $125k/year": false,
+      "$125k - $150k/year": false
+    }
+  });
 
   useEffect(() => {
-    // Load the dummy data (for now)
     setJobs(dummyJobs);
   }, []);
 
   const handleJobClick = (job) => {
-    alert(`Clicked job: ${job.title}`); // Replace this with a modal or navigation logic
+    setSelectedJob(job);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedJob(null);
   };
 
   const totalPages = Math.ceil(jobs.length / ITEMS_PER_PAGE);
@@ -279,49 +320,73 @@ export default function Jobs() {
     setCurrentPage(page);
   };
 
+  const filterJobs = (jobs) => {
+    return jobs.filter(job => {
+      const { City: cityFilters, "Type of Employment": employmentFilters, "Salary Range": salaryRangeFilters } = filters;
+
+      const cityMatch = Object.entries(cityFilters).some(([key, value]) => value && job.location === key);
+      const employmentMatch = Object.entries(employmentFilters).some(([key, value]) => value && job.employmentType === key);
+      const salaryMatch = Object.entries(salaryRangeFilters).some(([key, value]) => value && filterBySalaryRange(job.salary, key));
+
+      return (!Object.values(cityFilters).includes(true) || cityMatch) &&
+             (!Object.values(employmentFilters).includes(true) || employmentMatch) &&
+             (!Object.values(salaryRangeFilters).includes(true) || salaryMatch);
+    });
+  };
+
+  const filteredJobs = filterJobs(jobs);
+
   return (
-    <div>
-      <div className="title"><img src="./assets/imgs/AllJobs.svg" alt="" /></div>
-      <div className="job-listings-container">
-        {currentJobs.map(job => (
-          <JobCard key={job._id.$oid} job={job} onClick={handleJobClick} />
-        ))}
-      </div>
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                if (currentPage > 1) handlePageChange(currentPage - 1);
-              }}
-            />
-          </PaginationItem>
-          {[...Array(totalPages)].map((_, idx) => (
-            <PaginationItem key={idx}>
-              <PaginationLink
+    <div className="jobs-page">
+      <JobFilter filters={filters} setFilters={setFilters} />
+      <div className="jobs-list-container">
+        <div className="title"><img src="./assets/imgs/AllJobs.svg" alt="" /></div>
+        <div className="job-listings-container">
+          {filteredJobs.slice(startIdx, startIdx + ITEMS_PER_PAGE).map(job => (
+            <JobCard key={job._id.$oid} job={job} onClick={() => handleJobClick(job)} />
+          ))}
+        </div>
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
                 href="#"
                 onClick={(e) => {
                   e.preventDefault();
-                  handlePageChange(idx + 1);
+                  if (currentPage > 1) handlePageChange(currentPage - 1);
                 }}
-              >
-                {idx + 1}
-              </PaginationLink>
+              />
             </PaginationItem>
-          ))}
-          <PaginationItem>
-            <PaginationNext
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                if (currentPage < totalPages) handlePageChange(currentPage + 1);
-              }}
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+            {[...Array(totalPages)].map((_, idx) => (
+              <PaginationItem key={idx}>
+                <PaginationLink
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handlePageChange(idx + 1);
+                  }}
+                >
+                  {idx + 1}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+            <PaginationItem>
+              <PaginationNext
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (currentPage < totalPages) handlePageChange(currentPage + 1);
+                }}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
+      <JobModal
+        job={selectedJob}
+        isOpen={!!selectedJob}
+        onRequestClose={handleCloseModal}
+      />
     </div>
   );
 }

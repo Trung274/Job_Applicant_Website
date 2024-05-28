@@ -9,7 +9,7 @@ function JobCard({ job, onClick }) {
                 <div className='card-title'>{job.business}</div>
                 <div className='job-title'>{job.jobTitle}</div>
                 <div className="job-info">
-                    <span className="location">{job.location}</span>
+                    <span className="location">🏢{job.location}</span>
                     <span className="salary">{job.salary}</span>
                     <span className="employment-type">{job.employmentType}</span>
                 </div>

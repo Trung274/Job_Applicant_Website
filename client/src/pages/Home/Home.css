@@ -1,9 +1,9 @@
-.poster {
+.hposter {
   width: 100%;
   height: auto;
 }
 
-.job-listings-container {
+.hjob-listings-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -19,7 +19,7 @@
   margin-bottom: 20px;
 }
 
-.title {
+.htitle {
   font-size:x-large;
   margin:20px;
 }

@@ -1,3 +1,16 @@
+.jobs-page {
+  display: flex;
+  gap: 20px;
+}
+
+.filter-container {
+  width: 250px;
+}
+
+.jobs-list-container {
+  flex: 1;
+}
+
 .poster {
   width: 100%;
   height: auto;
@@ -8,7 +21,7 @@
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
 }
 
