@@ -1,0 +1,28 @@
+.location-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 16px;
+}
+
+.location-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.location-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+.location-text {
+    margin: 0;
+}

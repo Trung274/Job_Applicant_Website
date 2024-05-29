@@ -104,146 +104,6 @@ const dummyJobs = [
     "salary": "$95k/year",
     "employmentType": "Fulltime"
   },
-  {
-    "_id": { "$oid": "unique_id_11" },
-    "jobTitle": "Customer Support Specialist",
-    "description": "Friendly customer support specialist needed to assist our customers.",
-    "business": "SupportHub",
-    "location": "Houston, TX",
-    "businessLogoUrl": "/assets/logos/logo2.png",
-    "salary": "$45k/year",
-    "employmentType": "Fulltime"
-  },
-  {
-    "_id": { "$oid": "unique_id_12" },
-    "jobTitle": "IT Support Technician",
-    "description": "IT support technician needed to troubleshoot and resolve technical issues.",
-    "business": "TechFix",
-    "location": "San Diego, CA",
-    "businessLogoUrl": "/assets/logos/logo3.png",
-    "salary": "$60k/year",
-    "employmentType": "Fulltime"
-  },
-  {
-    "_id": { "$oid": "unique_id_13" },
-    "jobTitle": "Sales Representative",
-    "description": "Motivated sales representative needed to expand our client base.",
-    "business": "SalesCorp",
-    "location": "Phoenix, AZ",
-    "businessLogoUrl": "/assets/logos/logo1.png",
-    "salary": "$55k/year",
-    "employmentType": "Fulltime"
-  },
-  {
-    "_id": { "$oid": "unique_id_14" },
-    "jobTitle": "Operations Manager",
-    "description": "Operations manager needed to improve operational efficiency.",
-    "business": "OpsManage",
-    "location": "Philadelphia, PA",
-    "businessLogoUrl": "/assets/logos/logo2.png",
-    "salary": "$105k/year",
-    "employmentType": "Fulltime"
-  },
-  {
-    "_id": { "$oid": "unique_id_15" },
-    "jobTitle": "Business Analyst",
-    "description": "Business analyst needed to analyze business processes and data.",
-    "business": "AnalyzeThis",
-    "location": "Boston, MA",
-    "businessLogoUrl": "/assets/logos/logo3.png",
-    "salary": "$95k/year",
-    "employmentType": "Fulltime"
-  },
-  {
-    "_id": { "$oid": "unique_id_16" },
-    "jobTitle": "Social Media Manager",
-    "description": "Social media manager needed to manage and grow our social media presence.",
-    "business": "SocialBuzz",
-    "location": "Remote",
-    "businessLogoUrl": "/assets/logos/logo4.png",
-    "salary": "$65k/year",
-    "employmentType": "Remote"
-  },
-  {
-    "_id": { "$oid": "unique_id_17" },
-    "jobTitle": "Administrative Assistant",
-    "description": "Administrative assistant needed to support office operations.",
-    "business": "AdminPro",
-    "location": "Denver, CO",
-    "businessLogoUrl": "/assets/logos/logo5.png",
-    "salary": "$40k/year",
-    "employmentType": "Fulltime"
-  },
-  {
-    "_id": { "$oid": "unique_id_18" },
-    "jobTitle": "DevOps Engineer",
-    "description": "DevOps engineer needed to manage and optimize our infrastructure.",
-    "business": "CloudTech",
-    "location": "San Francisco, CA",
-    "businessLogoUrl": "/assets/logos/logo6.png",
-    "salary": "$130k/year",
-    "employmentType": "Fulltime"
-  },
-  {
-    "_id": { "$oid": "unique_id_19" },
-    "jobTitle": "Mobile App Developer",
-    "description": "Mobile app developer needed to create and maintain mobile applications.",
-    "business": "AppMaster",
-    "location": "Portland, OR",
-    "businessLogoUrl": "/assets/logos/logo6.png",
-    "salary": "$120k/year",
-    "employmentType": "Fulltime"
-  },
-  {
-    "_id": { "$oid": "unique_id_20" },
-    "jobTitle": "Data Analyst",
-    "description": "Data analyst needed to gather and interpret data to provide insights.",
-    "business": "DataCorp",
-    "location": "Salt Lake City, UT",
-    "businessLogoUrl": "/assets/logos/logo6.png",
-    "salary": "$85k/year",
-    "employmentType": "Fulltime"
-  },
-  {
-    "_id": { "$oid": "unique_id_21" },
-    "jobTitle": "SEO Specialist",
-    "description": "SEO specialist needed to optimize our website for search engines.",
-    "business": "WebOptimize",
-    "location": "Remote",
-    "businessLogoUrl": "/assets/logos/logo4.png",
-    "salary": "$70k/year",
-    "employmentType": "Remote"
-  },
-  {
-    "_id": { "$oid": "unique_id_22" },
-    "jobTitle": "Cybersecurity Analyst",
-    "description": "Cybersecurity analyst needed to protect our systems and data.",
-    "business": "SecureNet",
-    "location": "Atlanta, GA",
-    "businessLogoUrl": "/assets/logos/logo2.png",
-    "salary": "$115k/year",
-    "employmentType": "Fulltime"
-  },
-  {
-    "_id": { "$oid": "unique_id_23" },
-    "jobTitle": "Recruiter",
-    "description": "Recruiter needed to attract and hire top talent for our company.",
-    "business": "TalentFind",
-    "location": "Dallas, TX",
-    "businessLogoUrl": "/assets/logos/logo3.png",
-    "salary": "$70k/year",
-    "employmentType": "Fulltime"
-  },
-  {
-    "_id": { "$oid": "unique_id_24" },
-    "jobTitle": "Accountant",
-    "description": "Accountant needed to manage financial records and ensure compliance.",
-    "business": "FinManage",
-    "location": "Orlando, FL",
-    "businessLogoUrl": "/assets/logos/logo1.png",
-    "salary": "$75k/year",
-    "employmentType": "Fulltime"
-  }
 ];
 
 export default function Home() {
@@ -262,10 +122,14 @@ export default function Home() {
 
   return (
     <div>
-      <div className="hposter"><img src="./assets/imgs/Panel.svg" alt="" /></div>
-      <div className="htitle"><img src="./assets/imgs/Jobsopen.svg" alt="" /></div>
-      <div className="hjob-listings-container">
-        {jobs.map(job => (
+      <div className="w-full">
+        <img src="./assets/imgs/Panel.svg" alt="" className="w-full h-auto" />
+      </div>
+      <div className="text-2xl mx-5 my-5">
+        <img src="./assets/imgs/Jobsopen.svg" alt="" />
+      </div>
+      <div className="flex flex-wrap justify-center w-3/5 mx-auto gap-5">
+        {jobs.map((job) => (
           <JobCard key={job._id.$oid} job={job} onClick={handleJobClick} />
         ))}
       </div>

@@ -1,0 +1,34 @@
+.connect-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Changed from 'flex-start' */
+    margin-top: 0px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 16px; /* Added padding for spacing */
+}
+
+.connect-frame p {
+    font-size: 14px; /* Increased font size */
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px; /* Added margin for spacing */
+}
+
+.connect-frame h2 {
+    font-size: 18px; /* Increased font size */
+    margin-bottom: 16px; /* Added margin for spacing */
+}
+
+.connect-icon {
+    font-size: 20px; /* Increased icon size */
+    margin-right: 12px; /* Increased spacing */
+}
+
+.connect-frame a {
+    color: blue; /* Changed link color */
+    text-decoration: underline; /* Added underline */
+}
