@@ -25,9 +25,9 @@ const Footer = () => {
             </div>
             <div className="footer-section">
                 <h4>Account</h4>
-                <a href="/">My Account</a>
-                <a href="/">Login / Register</a>
-                <a href="/">Saved</a>
+                <a href="/profile">My Account</a>
+                <a href="/auth">Login / Register</a>
+                <a href="/saved">Saved</a>
             </div>
             <div className="footer-section">
                 <h4>About us</h4>

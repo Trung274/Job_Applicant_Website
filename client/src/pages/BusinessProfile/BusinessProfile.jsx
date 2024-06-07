@@ -1,12 +1,12 @@
-import { useContext } from "react";
-import { UserContext } from "../../../context/userContext";
+import React from "react";
 
-export default function BusinessProfile() {
-    const { user } = useContext(UserContext)
+const BusinessProfile = ({ profile }) => {
     return (
         <div>
-            <h1>hello business</h1>
-            {!!user && (<h1>Hi {user.name}!</h1>)}
+            <h1>Hello Business</h1>
+            {!!profile && (<h1>Hi {profile.name}!</h1>)}
         </div>
-    )
-}
+    );
+};
+
+export default BusinessProfile;

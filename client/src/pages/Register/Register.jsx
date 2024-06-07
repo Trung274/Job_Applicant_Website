@@ -14,23 +14,26 @@ export default function Register() {
     })
 
     const registerUser = async (e) => {
-        e.preventDefault()
-        const { name, email, password, role } = data
-        try {
-            const { data } = await axios.post(`http://localhost:8000/register`, {
-                name, email, password, role
-            })
-            if (data.error) {
-                toast.error(data.error)
-            } else {
-                setData({})
-                toast.success('Registration Successful, Welcome!')
-                navigate('/auth')
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }
+      e.preventDefault();
+      const { name, email, password, role } = data;
+      try {
+          const response = await axios.post('/api/auth/register', {
+              name,
+              email,
+              password,
+              roleName: role
+          });
+          if (response.data.error) {
+              toast.error(response.data.error);
+          } else {
+              setData({});
+              toast.success('Registration Successful, Welcome!');
+              navigate('/auth');
+          }
+      } catch (error) {
+          console.log(error);
+      }
+  };
 
     return (
         <div className="register-container">

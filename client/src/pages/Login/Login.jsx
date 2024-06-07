@@ -14,20 +14,20 @@ export default function Login() {
     });
 
     const loginUser = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('/login', data);
-            if (response.data.error) {
-                toast.error(response.data.error);
-            } else {
-                login(response.data.user, response.data.token); // Backend returns user data and token
-                navigate('/'); // Redirected to home
-            }
-        } catch (error) {
-            console.error('Login error:', error);
-            toast.error('Failed to log in');
-        }
-    };
+      e.preventDefault();
+      try {
+          const response = await axios.post('/api/auth/login', data);
+          if (response.data.error) {
+              toast.error(response.data.error);
+          } else {
+              login(response.data, response.data.token);
+              navigate('/');
+          }
+      } catch (error) {
+          console.error('Login error:', error);
+          toast.error('Failed to log in');
+      }
+  };
 
     return (
         <div className="login-container">

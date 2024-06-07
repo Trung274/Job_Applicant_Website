@@ -1,12 +1,12 @@
-import { useContext } from "react";
-import { UserContext } from "../../../context/userContext";
+import React from "react";
 
-export default function AdminDashboard() {
-    const { user } = useContext(UserContext)
+const AdminDashboard = ({ profile }) => {
     return (
         <div>
-            <h1>Hello Assmin</h1>
-            {!!user && (<h1>Hi {user.name}!</h1>)}
+            <h1>Hello Admin</h1>
+            {!!profile && (<h1>Hi {profile.name}!</h1>)}
         </div>
-    )
-}
+    );
+};
+
+export default AdminDashboard;
