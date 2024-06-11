@@ -22,7 +22,7 @@ export function UserContextProvider({ children }) {
     
     const login = (userData, token) => {
         localStorage.setItem('token', token);
-        setUser(userData);
+        setUser({ ...userData, id: userData._id });
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     };
 

@@ -1,22 +1,21 @@
 import React, { useContext } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { UserContext } from '../../../context/userContext';
 
 const PrivateRoute = ({ children, requiredRoles = [] }) => {
-    const { user } = useContext(UserContext); // Access authentication and roles
+    debugger
+    const { user } = useContext(UserContext);
 
     if (!user) {
-      // Redirect to login page if not authenticated
-      return <Navigate to="/auth" replace />;
+        return <Navigate to="/auth" replace />;
     }
-  
-    const hasRequiredRole = requiredRoles.includes(user.role); // Check for required role
+
+    const hasRequiredRole = requiredRoles.includes(user.roleId.name);
     if (!hasRequiredRole) {
-      // Redirect to unauthorized page (optional)
-      return <Navigate to="/auth" replace />;
+        return <Navigate to="/auth" replace />;
     }
-  
-    return children || <Outlet />; // Render children or Outlet for nested routes
+
+    return children;
 };
-  
+
 export default PrivateRoute;

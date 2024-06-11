@@ -4,6 +4,7 @@ const Profile = require('../models/profile');
 const requireRole = require('../middlewares/roleMiddleware');
 
 router.get('/:id', requireRole(['user', 'business', 'admin']), async (req, res) => {
+    debugger
     try {
         const profile = await Profile.findById(req.params.id).populate('roleId').populate('savedJobs').populate('jobOpenings');
         if (!profile) {

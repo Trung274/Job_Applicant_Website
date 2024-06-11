@@ -1,4 +1,5 @@
 const Profile = require('../models/profile');
+const Role = require('../models/role');
 
 exports.createProfile = async (req, res) => {
     try {
@@ -11,11 +12,13 @@ exports.createProfile = async (req, res) => {
 
 exports.getProfiles = async (req, res) => {
     try {
-        const profiles = await Profile.find().populate('roleId savedJobs jobOpenings');
+        const profiles = await Profile.find().populate({path:'roleId', model: Role });
+        debugger
+        console.log('xxxxx')
         res.json(profiles);
     } catch (error) {
         res.status(500).json({ error: 'Failed to retrieve profiles' });
     }
 };
 
-// Add other CRUD operations as needed
+// Add other CRUD operations 

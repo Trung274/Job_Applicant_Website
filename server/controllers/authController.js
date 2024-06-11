@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const registerUser = async (req, res) => {
     console.log(req.body);
     try {
-        const { name, email, password, roleName } = req.body;
+        const { name, email, password, roleName, phone, city, avatar, background, description, languages, userTitle, profileLink, businessLink, address } = req.body;
         // Check if name was entered
         if (!name) {
             return res.json({
@@ -52,12 +52,22 @@ const registerUser = async (req, res) => {
 
         const hashedPassword = await hashPassword(password);
 
-        // Create profile in database with the role reference
+        // Create profile in database with all the fields
         const profile = await Profile.create({
             name,
             email,
             password: hashedPassword,
             roleId: role._id,
+            phone,
+            city,
+            avatar,
+            background,
+            description,
+            languages,
+            userTitle,
+            profileLink,
+            businessLink,
+            address
         });
 
         return res.json(profile);
@@ -103,6 +113,7 @@ const getProfile = (req, res) => {
     if (token) {
         jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
             if (err) throw err;
+            console.log('vvvvvv')
             res.json(user);
         });
     } else {

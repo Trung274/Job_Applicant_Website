@@ -1,18 +1,21 @@
 import React from 'react';
-import './BusinessCard.css';
 
 function BusinessCard({ business, onClickViewJobs }) {
-    return (
-        <div className="business-card" onClick={onClickViewJobs}>
-            <div className="business-card-header">
-                <img src={business.profileImage} alt={`${business.name} profile`} className="profile-image" />
-                <div className="business-details">
-                    <div className="business-name">{business.name}</div>
-                    <div className="business-city">{business.city}</div>
-                </div>
-            </div>
-        </div>
-    );
+  return (
+    <div
+      className="flex items-center border border-gray-300 rounded-lg p-4 mb-4 bg-white shadow-md hover:shadow-lg transition duration-300 cursor-pointer"
+      onClick={onClickViewJobs}
+    >
+      <img src={business.profileImage} alt={`${business.name} profile`} className="w-16 h-16 rounded-full mr-4" />
+      <div className="flex-grow">
+        <div className="text-lg font-bold mb-1">{business.name}</div>
+        <div className="text-gray-600">{business.city}</div>
+      </div>
+      <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+        View Jobs
+      </button>
+    </div>
+  );
 }
 
 export default BusinessCard;
