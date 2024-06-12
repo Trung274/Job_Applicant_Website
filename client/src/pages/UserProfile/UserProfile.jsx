@@ -16,7 +16,7 @@ export default function UserProfile() {
         const fetchProfile = async () => {
             const token = localStorage.getItem('accessToken');
             if (token) {
-                axios.get('/api/auth/profile', {
+                axios.get('/api/profile/getProfiles', {
                     headers: { Authorization: `Bearer ${token}` }
                 }).then(response => {
                     setProfile(response.data);
