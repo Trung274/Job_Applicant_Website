@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/profiles', require('./routes/profileRoutes'));
+app.use('/api/profile', require('./routes/profileRoutes'));
 
 app.use('/', require(`./routes/authRoutes`))
 
