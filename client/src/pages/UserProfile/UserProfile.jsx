@@ -8,25 +8,28 @@ import Location from "../../components/UserProfile/Location/Location";
 import UserProfileFrame from "../../components/UserProfile/ProfileFrame/UserProfileFrame";
 
 export default function UserProfile() {
-    const { id } = useParams();
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchProfile = async () => {
-            try {
-                const response = await axios.get(`/api/profiles/${id}`);
-                setProfile(response.data);
-                setLoading(false);
-            } catch (error) {
-                setError("Failed to fetch user profile");
-                setLoading(false);
+            const token = localStorage.getItem('accessToken');
+            if (token) {
+                axios.get('/api/auth/profile', {
+                    headers: { Authorization: `Bearer ${token}` }
+                }).then(response => {
+                    setProfile(response.data);
+                    setLoading(false);
+                }).catch(error => {
+                    setError("Failed to fetch user profile");
+                    setLoading(false);
+                });
             }
         };
 
         fetchProfile();
-    }, [id]);
+    }, []);
 
     if (loading) {
         return <div>Loading...</div>;

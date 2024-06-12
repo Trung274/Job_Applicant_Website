@@ -1,5 +1,6 @@
 const Profile = require('../models/profile');
 const Role = require('../models/role');
+const Features = require('../models/feature');
 const { hashPassword, comparePassword } = require('../helpers/auth');
 const jwt = require('jsonwebtoken');
 
@@ -83,7 +84,15 @@ const loginUser = async (req, res) => {
         const { email, password } = req.body;
 
         // Check if profile exists
-        const profile = await Profile.findOne({ email });
+        const profile = await Profile.findOne({ email })
+            .populate({
+                path: 'roleId',
+                model: Role,
+                populate: {
+                    path: 'permissions',
+                    model: Features
+                }
+            });
         if (!profile) {
             return res.json({
                 error: 'No profile found'
@@ -95,7 +104,11 @@ const loginUser = async (req, res) => {
         if (match) {
             jwt.sign({ email: profile.email, id: profile._id, name: profile.name }, process.env.JWT_SECRET, {}, (err, token) => {
                 if (err) throw err;
-                res.cookie('token', token).json(profile);
+                return res.json({
+                    message: 'Login Successfull',
+                    accessToken: token,
+                    profile,
+                });
             });
         } else {
             res.json({
