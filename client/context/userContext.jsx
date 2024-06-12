@@ -6,28 +6,16 @@ export const UserContext = createContext({});
 export function UserContextProvider({ children }) {
     const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            axios.get('/api/auth/profile', {
-                headers: { Authorization: `Bearer ${token}` }
-            }).then(response => {
-                setUser(response.data);
-            }).catch(error => {
-                console.log('Authentication token invalid:', error);
-                localStorage.removeItem('token');
-            });
-        }
-    }, []);
-    
     const login = (userData, token) => {
-        localStorage.setItem('token', token);
+        localStorage.setItem('accessToken', token);
+        localStorage.setItem('userId', userData._id);
+        localStorage.setItem('roleId', userData.roleId._id);
         setUser({ ...userData, id: userData._id });
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     };
 
     const logout = () => {
-        localStorage.removeItem('token'); // Remove token from localStorage
+        localStorage.clear();
         setUser(null); // Clear user state
         delete axios.defaults.headers.common['Authorization']; // Remove auth header
     };
