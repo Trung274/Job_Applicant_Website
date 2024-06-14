@@ -8,35 +8,61 @@ import './Login.css';
 export default function Login() {
     const { login } = useContext(UserContext);
     const navigate = useNavigate();
-    const [data, setData] = useState({
+    const [formData, setFormData] = useState({
         email: '',
         password: '',
     });
 
-    const loginUser = async (e) => {
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.post('/api/auth/login', data);
-            if (response.data.error) {
-                toast.error(response.data.error);
-            } else {
-                login(response.data.profile, response.data.accessToken);
-                navigate('/');
+        const { email, password } = formData;
+
+        if (email && password) {
+            try {
+                const response = await axios.post('/api/auth/login', { email, password });
+                if (response.data.error) {
+                    toast.error(response.data.error);
+                } else {
+                    login(response.data.profile, response.data.accessToken);
+                    navigate('/');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                toast.error('Failed to log in');
             }
-        } catch (error) {
-            console.error('Login error:', error);
-            toast.error('Failed to log in');
         }
     };
 
     return (
         <div className="login-container">
-            <form onSubmit={loginUser} className="login-form">
-                <label>Email</label>
-                <input type="email" placeholder='Enter email...' value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
-                <label>Password</label>
-                <input type="password" placeholder='Enter Password...' value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
-                <button type='submit'>Login</button>
+            <form onSubmit={handleSubmit} className="login-form">
+                <label>
+                    Email:
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter email..."
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
+                </label>
+                <br />
+                <label>
+                    Password:
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter Password..."
+                        value={formData.password}
+                        onChange={handleChange}
+                    />
+                </label>
+                <br />
+                <button type="submit">Login</button>
             </form>
         </div>
     );
